@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:syncmaskededit="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion.SfMaskedEdit.XForms"
+             xmlns:xForms="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms"
+       
+             xmlns:xForms1="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
+             xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:generic="clr-namespace:System.Collections.Generic;assembly=netstandard"
+             x:Class="Wplaty_v2.View.OptionPages.AddNewPassengerPage">
+    <NavigationPage.TitleView>
+        <StackLayout Padding="5" Orientation="Horizontal" BackgroundColor="DodgerBlue">
+            <Label Text="Nowy pasażer"
+                   Padding="5"
+                   FontSize="24"
+                   TextColor="White"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center"
+                   HeightRequest="40"
+                   WidthRequest="300"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <StackLayout>
+        <StackLayout Padding="20">
+            <textInputLayout:SfTextInputLayout
+                WidthRequest="120"
+                HorizontalOptions="Center"
+                ContainerType="Outlined"
+                IsEnabled="True"
+                UnfocusedColor="#F72585"
+                InputViewPadding="6"
+                LeadingViewPosition="Outside" >
+                <Entry x:Name="entryID" FontSize="24" Text="{Binding NextId}" Keyboard="Numeric" HorizontalTextAlignment="Center"/>
+                <textInputLayout:SfTextInputLayout.LeadingView>
+                    <Image Source="ID.png" Scale="2.5" Margin="0,5,20,0"
+                    />
+                </textInputLayout:SfTextInputLayout.LeadingView>
+            </textInputLayout:SfTextInputLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <textInputLayout:SfTextInputLayout
+                    x:Name="inputFirstName"
+                    Hint="Imię"
+                    WidthRequest="160"
+                    ContainerType="Outlined"
+                    HelperText="Wymagane *"
+                    LeadingViewPosition="Outside" >
+                    <Entry x:Name="entryFirstName" />
+                    <textInputLayout:SfTextInputLayout.LeadingView>
+                        <Image Source="UserAdd.png" Scale="2"
+                        />
+                    </textInputLayout:SfTextInputLayout.LeadingView>
+                </textInputLayout:SfTextInputLayout>
+                <textInputLayout:SfTextInputLayout
+                    Hint="Nazwisko"
+                    x:Name="inputLastName"
+                    HelperText="Wymagane *"
+                    HorizontalOptions="FillAndExpand"
+                    ContainerType="Outlined"
+                    LeadingViewPosition="Outside" >
+                    <Entry x:Name="entryLastName"/>
+                </textInputLayout:SfTextInputLayout>
+            </StackLayout>
+
+            <textInputLayout:SfTextInputLayout
+                Hint="Telefon"
+                ContainerType="Outlined"
+                LeadingViewPosition="Outside" >
+                <syncmaskededit:SfMaskedEdit
+                    x:Name="entryPhone"
+                    Keyboard="Numeric"
+                    Mask="000 000 000"
+                    />
+                <textInputLayout:SfTextInputLayout.LeadingView>
+                    <Image Source="Telephone.png" Scale="2"
+                    />
+                </textInputLayout:SfTextInputLayout.LeadingView>
+            </textInputLayout:SfTextInputLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <textInputLayout:SfTextInputLayout
+                    Hint="Trasa"
+                    x:Name="inputRoute"
+                    HelperText="Wymagane *"
+                    ContainerType="Outlined"
+                    LeadingViewPosition="Outside" >
+                    <comboBox:SfComboBox WidthRequest="350" 
+                                         HeightRequest="50" 
+                                         x:Name="entryRoute"
+                                         IsEditableMode="true" 
+                                         AllowFiltering="true" 
+                                         TextHighlightMode="FirstOccurrence" 
+                                         HighlightedTextColor="Red" 
+                                         HighlightedTextFontAttributes="Bold" 
+                                         SuggestionMode="StartsWith"
+                                         ValueChanged="EntryRoute_OnValueChanged">
+                        <comboBox:SfComboBox.ComboBoxSource>
+                            <!-- List -->
+                        </comboBox:SfComboBox.ComboBoxSource>
+                    </comboBox:SfComboBox>
+                    <textInputLayout:SfTextInputLayout.LeadingView>
+                        <Image Source="Transport.png" Scale="2"/>
+                    </textInputLayout:SfTextInputLayout.LeadingView>
+                </textInputLayout:SfTextInputLayout>
+                <ImageButton Source="AddCircle.png" BackgroundColor="White" WidthRequest="40" CornerRadius="10" VerticalOptions="Center"></ImageButton>
+            </StackLayout>
+
+
+
+
+            <textInputLayout:SfTextInputLayout
+                Hint="Cena biletu"
+                x:Name="inputPrice"
+                HelperText="Wymagane *"
+                ContainerType="Outlined"
+                LeadingViewPosition="Outside" >
+                <Entry x:Name="entryPrice" IsReadOnly="True" />
+                <textInputLayout:SfTextInputLayout.LeadingView>
+                    <Image Source="DollarTag.png" Scale="2"
+                    />
+                </textInputLayout:SfTextInputLayout.LeadingView>
+            </textInputLayout:SfTextInputLayout>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Button x:Name="btnAdd"
+                    Text="Dodaj"
+                    BackgroundColor="#4361EE"
+                    TextColor="White"
+                    WidthRequest="120"
+                    CornerRadius="5"
+                    Clicked="BtnAdd_OnClicked"/>
+            <Button x:Name="btnCancel"
+                    Text="Reset"
+                    WidthRequest="120"
+                    BackgroundColor="DimGray"
+                    TextColor="White"
+                    CornerRadius="5"
+                    Clicked="BtnCancel_OnClicked"/>
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>

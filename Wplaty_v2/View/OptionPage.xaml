@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wplaty_v2.View.OptionPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="DodgerBlue">
+            <StackLayout   Padding="20">
+                <Label Text="LISTA PASAŻERÓW"
+                       HorizontalTextAlignment="Center"
+                       Padding="20"
+                       FontSize="26"
+                       TextColor="White"/>
+                <Button x:Name="UpdateListFromCsv"
+                    Text="Zaktualizuj listę pasażerów z pliku csv" 
+                        BackgroundColor="DarkViolet" 
+                        TextColor="White" 
+                        HorizontalOptions="CenterAndExpand"
+                    Clicked="UpdateListFromCsv_OnClicked"
+                        />
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="10">
+                    <Button x:Name="btnAddPassenger"
+                        Text="Dodaj" 
+                            BackgroundColor="DarkViolet" 
+                            TextColor="White" 
+                        Clicked="BtnAddPassenger_OnClicked"/>
+                    <Button x:Name="btnEdit"
+                        Text="Edytuj"
+                            BackgroundColor="DarkViolet" 
+                            TextColor="White"
+                        Clicked="BtnEdit_OnClicked"/>
+                    <Button Text="Usuń"
+                            BackgroundColor="DarkViolet" 
+                            TextColor="White" />
+                </StackLayout>
+
+            </StackLayout>
+            <StackLayout   Padding="20">
+                <Label Text="Pozostałe opcje"
+                       HorizontalTextAlignment="Center"
+                       Padding="20"
+                       FontSize="26"
+                       TextColor="White"/>
+                <Button x:Name="btnSendPaymentsToEmail"
+                    Text="Wyślij listę wpłat na e-mail" 
+                        BackgroundColor="DeepPink" 
+                        TextColor="White" 
+                        HorizontalOptions="CenterAndExpand"
+                    Clicked="BtnSendPaymentsToEmail_OnClicked"/>
+                <Button x:Name="btnChangePaymentNumber"
+                        Text="Ustaw nowy numer wpłaty" 
+                        BackgroundColor="DeepPink" 
+                        TextColor="White" 
+                        HorizontalOptions="CenterAndExpand"
+                        Clicked="BtnChangePaymentNumber_OnClicked"/>
+                <Button x:Name="btnShowPaymentsTable"
+                        Text="Tabela Wpłat z bazy danych" 
+                        BackgroundColor="DeepPink" 
+                        TextColor="White" 
+                        HorizontalOptions="CenterAndExpand"
+                        Clicked="BtnShowPaymentsTable_OnClicked"/>
+                <Button x:Name="btnNewMonth"
+                        Text="NOWY MIESIĄC" 
+                        BackgroundColor="Red" 
+                        TextColor="White" 
+                        HorizontalOptions="CenterAndExpand"
+                        Clicked="BtnNewMonth_OnClicked"/>
+            </StackLayout>
+
+            <Label Text="Welcome to Xamarin.Forms!"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+            <Button x:Name="tempButton" Text="Testowy" Clicked="BackButton_OnClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

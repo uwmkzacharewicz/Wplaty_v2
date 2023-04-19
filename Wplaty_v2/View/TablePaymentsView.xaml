@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             xmlns:sfgrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             x:Class="Wplaty_v2.View.TablePaymentsView">
+    <NavigationPage.TitleView>
+        <StackLayout>
+            <StackLayout VerticalOptions="Start" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="20">
+                <Button x:Name="btnExport"
+                        BackgroundColor="#7209B7" 
+                        BorderColor="White"
+                        BorderWidth="2"
+                        CornerRadius="20"
+                        WidthRequest="120"
+                        HeightRequest="40"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        Text="Wyślij e-mail"
+                        FontSize="12"
+                        TextColor="White"
+                        Clicked="BtnExport_OnClicked"/>
+                <Button x:Name="btnNotPaid"
+                        BackgroundColor="#B5179E" 
+                        BorderColor="White"
+                        BorderWidth="2" 
+                        Text="Niezapłacone"
+                        WidthRequest="120"
+                        HeightRequest="40"
+                        HorizontalOptions="StartAndExpand"
+                        CornerRadius="20"
+                        FontSize="12"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand"
+                        Clicked="BtnNotPaid_OnClicked"/>
+            </StackLayout>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <StackLayout Margin="10" BackgroundColor="White">
+        <StackLayout x:Name="layFirst" Orientation="Horizontal" Spacing="20" HorizontalOptions="CenterAndExpand" IsVisible="True">
+            <StackLayout x:Name="laySwitchOnlyNotOrder" Orientation="Horizontal" IsVisible="True">
+                <Label Text="Tylko niezamówione" VerticalOptions="Center" WidthRequest="100" TextColor="DimGray" HorizontalTextAlignment="Start"/>
+                <Switch x:Name="switchOnlyNotOrder" IsToggled="False" IsEnabled="True" Toggled="SwitchOnlyNotOrder_OnToggled" Margin="-15,0,10,0"/>
+            </StackLayout>
+            <ImageButton x:Name="btnShowSearch" Source="search.png" BackgroundColor="White" VerticalOptions="CenterAndExpand"  Clicked="BtnShowSearch_OnClicked" HeightRequest="60"/>
+            <textInputLayout:SfTextInputLayout
+                x:Name="textInput"
+                ContainerType="Filled"
+                IsVisible="False"
+                HeightRequest="50"
+                FocusedColor="#4895EF"
+                ContainerBackgroundColor="White"
+                UnfocusedColor="Gray"
+                Margin="-5,5,0,0"
+                InputViewPadding="10,0,0,0">
+                <Entry x:Name="entrySearch" HeightRequest="40" IsSpellCheckEnabled="False" TextChanged="EntrySearch_OnTextChanged"/>
+            </textInputLayout:SfTextInputLayout>
+
+        </StackLayout>
+        <StackLayout x:Name="laySelect" IsVisible="False" Orientation="Horizontal" Spacing="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Button x:Name="btnSelectAll" Text="Odznacz wszystko" BackgroundColor="#4895EF" TextColor="White" WidthRequest="150" CornerRadius="20" HeightRequest="40" FontSize="12" Clicked="BtnSelectAll_OnClicked" />
+            <CheckBox x:Name="checkNotPaid" IsChecked="True" Margin="20,0,-8,0" CheckedChanged="CheckNotPaid_OnCheckedChanged"/>
+            <Label Text="pokaż niezapłacone" VerticalOptions="Center"/>
+        </StackLayout>
+        <StackLayout Padding="10">
+            <syncfusion:SfDataGrid x:Name="dataGrid"
+                                       ItemsSource="{Binding PaymentsListView}"
+                                       HeightRequest="600"
+                                       SelectionMode="None"
+                                       NavigationMode="Row"
+                                       AllowSorting="True"
+                                       GridDoubleTapped ="DataGrid_OnGridDoubleTapped"
+                                       AutoGenerateColumns="False">
+                <syncfusion:SfDataGrid.SortColumnDescriptions>
+                    <syncfusion:SortColumnDescription ColumnName="FullName" 
+                                                      SortDirection="Ascending" />
+                </syncfusion:SfDataGrid.SortColumnDescriptions>
+                <syncfusion:SfDataGrid.TableSummaryRows>
+                    <syncfusion:GridTableSummaryRow Title="   Ilość: {Ilosc}                 Suma:  {Price} zł"
+                                                ShowSummaryInRow="True">
+                        <syncfusion:GridTableSummaryRow.SummaryColumns>
+                            <syncfusion:GridSummaryColumn Name="Price"
+                                                      Format="{}{Sum:n}"
+                                                      MappingName="Price"
+                                                      SummaryType="DoubleAggregate" />
+                            <syncfusion:GridSummaryColumn Name="Ilosc"
+                                                      Format="{}{Count}"
+                                                      MappingName="Salary"
+                                                      SummaryType="CountAggregate" />
+                        </syncfusion:GridTableSummaryRow.SummaryColumns>
+                    </syncfusion:GridTableSummaryRow>
+                </syncfusion:SfDataGrid.TableSummaryRows>
+                <syncfusion:SfDataGrid.GridStyle>
+                    <syncfusion:DefaultStyle HeaderBackgroundColor="#4895EF" 
+                                             HeaderForegroundColor="White"
+                                             RowBackgroundColor="White" 
+                                             RowForegroundColor="Black"
+                                             SelectionBackgroundColor="LightSkyBlue" 
+                                             SelectionForegroundColor="Black"
+                                             ColumnDragViewBackgroundColor="Red"
+                                             CaptionSummaryRowBackgroundColor="Black" 
+                                             CaptionSummaryRowForegroundColor="White"
+                                             GridCellBorderColor="Black"
+                                             GridCellBorderWidth="2"
+                                             LoadMoreViewBackgroundColor="Gray"
+                                             LoadMoreViewForegroundColor="Black"/>
+                </syncfusion:SfDataGrid.GridStyle>
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTextColumn HeaderFontAttribute="Bold"
+                                               HeaderCellTextSize="14"
+                                               IsHidden="False"
+                                               HeaderText="Lp." 
+                                               ColumnSizer = "Auto"
+                                               MappingName="Id" />
+                    <syncfusion:GridTextColumn HeaderFontAttribute="Bold"
+                                               HeaderCellTextSize="14"
+                                               IsHidden="True"
+                                               HeaderText="Data" 
+                                               MappingName="DateOfPayment" />
+                    <syncfusion:GridTextColumn HeaderFontAttribute="Bold"
+                                               HeaderCellTextSize="14"
+                                               IsHidden="False"
+                                               ColumnSizer="None"
+                                               HeaderText="Numer wpłaty" 
+                                               MappingName="NumberPayment" />
+                    <syncfusion:GridTextColumn HeaderFontAttribute="Bold"
+                                               HeaderCellTextSize="14"
+                                               IsHidden="True"
+                                               HeaderText="IdPass" 
+                                               MappingName="IdPassenger" />
+                    <syncfusion:GridTextColumn HeaderFontAttribute="Bold"
+                                                   HeaderCellTextSize="14"
+                                                   HeaderText="Pasażer"
+                                                   ColumnSizer="Star"
+                                                   MappingName="FullName" />
+                    <syncfusion:GridTextColumn HeaderFontAttribute="Bold"
+                                               HeaderCellTextSize="14"
+                                               IsHidden="True"
+                                               HeaderText="Trasa" 
+                                               MappingName="Route" />
+                    <syncfusion:GridTextColumn HeaderFontAttribute="Bold"
+                                               HeaderCellTextSize="14"
+                                               IsHidden="False"
+                                               Format="N"
+                                               HeaderText="Kwota" 
+                                               MappingName="Price" />
+                    <syncfusion:GridTextColumn HeaderFontAttribute="Bold"
+                                                   HeaderCellTextSize="14"
+                                                   HeaderText="Status"
+                                                   ColumnSizer="LastColumnFill"
+                                                   MappingName="SendStatus" />
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+            <Button x:Name="btnCancelHand" Text="Powrót" Clicked="BtnCancelHand_OnClicked" IsVisible="False"/>
+            <StackLayout Margin="0,5,0,0" Orientation="Horizontal">
+                <Button x:Name="btnStartOrder"
+                    Text="Kliknij, aby zamówić bilety"
+                        CornerRadius="20"
+                        IsVisible="True"
+                        Padding="10"
+                        BackgroundColor="#F72585"
+                        TextColor="White"
+                        HorizontalOptions="CenterAndExpand"
+                    Clicked="BtnStartOrder_OnClicked"/>
+                <Button x:Name="btnOrder"
+                    Text="Zamów"
+                        IsVisible="False"
+                        CornerRadius="20"
+                        Padding="10"
+                        BackgroundColor="#F72585"
+                        TextColor="White"
+                        WidthRequest="150"
+                        HorizontalOptions="CenterAndExpand"
+                    Clicked="BtnOrder_OnClicked"/>
+                <Button x:Name="btnCancel"
+                    Text="Odrzuć"
+                        IsVisible="False"
+                        CornerRadius="20"
+                        Padding="10"
+                        BackgroundColor="#4895EF"
+                        WidthRequest="120"
+                        TextColor="White"
+                        HorizontalOptions="CenterAndExpand"
+                    Clicked="BtnCancel_OnClicked"/>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

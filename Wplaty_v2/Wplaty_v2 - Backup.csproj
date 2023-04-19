@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="DataBase\ActualPassenger.csv" />
+    <None Remove="DataBase\file.csv" />
+    <None Remove="DataBase\OpenSans-Medium.ttf" />
+    <None Remove="DataBase\Passengers.csv" />
+    <None Remove="DataBase\PassengersBase1.db" />
+    <None Remove="DataBase\settings.png" />
+    <None Remove="DataBase\ticket.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="DataBase\ActualPassenger.csv" />
+    <EmbeddedResource Include="DataBase\file.csv" />
+    <EmbeddedResource Include="DataBase\OpenSans-Medium.ttf" />
+    <EmbeddedResource Include="DataBase\Passengers.csv" />
+    <EmbeddedResource Include="DataBase\PassengersBase1.db" />
+    <EmbeddedResource Include="DataBase\settings.png" />
+    <EmbeddedResource Include="DataBase\ticket.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="28.0.1" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.17.1" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="Syncfusion.Xamarin.SfAutoComplete" Version="20.1.0.61" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="20.1.0.61" />
+    <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="20.1.0.61" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.4" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="View\EditPassengerInfoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\PassengerInfo.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\PaymentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\TablePaymentsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

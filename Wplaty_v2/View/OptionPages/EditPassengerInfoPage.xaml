@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+           x:Class="Wplaty_v2.View.OptionPages.EditPassengerInfoPage"
+           Size="300,450"
+           IsLightDismissEnabled="False"
+           BackgroundColor="White">
+
+    <StackLayout Padding="10" HorizontalOptions="CenterAndExpand">
+        <Label Text="Edytuj" FontAttributes="Bold"
+               FontSize="22"
+               VerticalOptions="CenterAndExpand" 
+               HorizontalOptions="CenterAndExpand"
+               Padding="10"
+               TextColor="Black"
+               HorizontalTextAlignment="Center" />
+        <BoxView HeightRequest="1" Color="Black" IsVisible="True"/>
+        <StackLayout Orientation="Horizontal" HeightRequest="80">
+            <Entry x:Name="enFullName"
+                   Text="{Binding EditPassenger.FullName}" 
+                   FontAttributes="Bold"
+                   FontSize="20"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"
+                   TextColor="Black"
+                   HorizontalTextAlignment="Center"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Trasa:" FontAttributes="Bold"
+                   FontSize="14"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="StartAndExpand"
+                   Padding="10"
+                   HorizontalTextAlignment="Center"/>
+            <Entry x:Name="enRoute"
+                   Text="{Binding EditPassenger.Route}" FontAttributes="Bold"
+                   FontSize="16"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="EndAndExpand"
+                   TextColor="Black"
+                   HorizontalTextAlignment="Center"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Cena:" FontAttributes="Bold"
+                   FontSize="14"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="StartAndExpand"
+                   Padding="10"
+                   HorizontalTextAlignment="Center"/>
+            <Entry x:Name="enPrice"
+                   Text="{Binding EditPassenger.Price}" FontAttributes="Bold"
+                   FontSize="16"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="EndAndExpand"
+                   TextColor="Black"
+                   HorizontalTextAlignment="Center"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Telefon:" FontAttributes="Bold"
+                   FontSize="14"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="StartAndExpand"
+                   Padding="10"
+                   HorizontalTextAlignment="Center"/>
+            <Entry x:Name="enPhone"
+                    Text="{Binding EditPassenger.Phone}" FontAttributes="Bold"
+                   FontSize="16"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="EndAndExpand"
+                   TextColor="Black"
+                   HorizontalTextAlignment="Center"/>
+        </StackLayout>
+        <BoxView HeightRequest="1" Color="Black" IsVisible="True"/>
+
+        <ProgressBar ProgressColor="Purple" Progress="0.0" 
+                     x:Name="progressBar"/>
+        <Label x:Name="lblProgress" Text="Czekam na potwierdzenie..." TextColor="Black" HorizontalTextAlignment="Center" Padding="5" />
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Button x:Name="btnAdd" Text="Edytuj" Padding="10"  BackgroundColor="Magenta" TextColor="White"  WidthRequest="150"
+                    HorizontalOptions="Center" Clicked="BtnAdd_OnClicked"/>
+            <Button x:Name="btnExit" Text="Anuluj"   WidthRequest="120" 
+                    HorizontalOptions="Center" Clicked="BtnExit_OnClicked"/>
+        </StackLayout>
+
+    </StackLayout>
+</xct:Popup>

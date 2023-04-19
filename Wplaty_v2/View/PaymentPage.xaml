@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+           x:Class="Wplaty_v2.View.PaymentPage"
+           Size="300,580"
+           IsLightDismissEnabled="False"
+           BackgroundColor="White">
+
+    <StackLayout Padding="10" HorizontalOptions="CenterAndExpand">
+        <Label Text="{Binding CurrentPassenger.FullName}" FontAttributes="Bold"
+               FontSize="20"
+               VerticalOptions="CenterAndExpand" 
+               HorizontalOptions="CenterAndExpand"
+               Padding="10"
+               TextColor="Black"
+               HorizontalTextAlignment="Center" />
+        <BoxView HeightRequest="1" Color="Black" IsVisible="True"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Numer wpłaty:" FontAttributes="Bold"
+                   FontSize="14"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="StartAndExpand"
+                   Padding="10"
+                   HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding NextPaymentNumber}" FontAttributes="Bold"
+                   FontSize="16"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="EndAndExpand"
+                   Padding="10"
+                   TextColor="Black"
+                   HorizontalTextAlignment="Center"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Data:" FontAttributes="Bold"
+                   FontSize="14"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="StartAndExpand"
+                   Padding="10"
+                   HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DatePayment}" FontAttributes="Bold"
+                   FontSize="16"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="EndAndExpand"
+                   Padding="10"
+                   TextColor="Black"
+                   HorizontalTextAlignment="Center"/>
+        </StackLayout>
+        <BoxView HeightRequest="1" Color="Black" IsVisible="True"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Kwota:" FontAttributes="Bold"
+                   FontSize="16"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="StartAndExpand"
+                   Padding="10"
+                   HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding CurrentPassenger.Price, StringFormat='{0} zł'}" FontAttributes="Bold"
+                   FontSize="20"
+                   VerticalOptions="CenterAndExpand" 
+                   Margin="5"
+                   HorizontalOptions="EndAndExpand"
+                   Padding="10"
+                   TextColor="Red"
+                   HorizontalTextAlignment="Center"/>
+        </StackLayout>
+        <StackLayout Spacing="1" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <RadioButton x:Name="rbCash" Content="Gotówka" IsChecked="True" TextColor="Black" />
+            <RadioButton x:Name="rbTransfer" Content="Przelew" TextColor="Black" />
+            <RadioButton x:Name="rbBlik" Content="BLIK" TextColor="Black"/>
+        </StackLayout>
+        <BoxView HeightRequest="1" Color="Black" IsVisible="True"/>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" >
+            <CheckBox x:Name="chbChangeNumber"/>
+            <Label Text="Zmień numer" VerticalOptions="Center"/>
+            <Entry x:Name="NewNumber" IsEnabled="True" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" WidthRequest="150" Margin="5" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" >
+            <CheckBox x:Name="chbComment"/>
+            <Label Text="Komentarz" VerticalOptions="Center"/>
+            <Entry x:Name="NewComment" IsEnabled="True" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" WidthRequest="155" Margin="5" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center" Padding="5">
+            <Label Text="Wyślij SMS" VerticalOptions="Center" TextColor="DimGray"/>
+            <Switch x:Name="sendSMS"  IsToggled="True" Margin="-8,0,10,0" Toggled="SendSMS_OnToggled"/>
+            <Label Text="Zapłacony" VerticalOptions="Center" TextColor="DimGray"/>
+            <Switch x:Name="switchPaid" Margin="-8,0,0,0" IsToggled="True" Toggled="SwitchPaid_OnToggled"/>
+        </StackLayout>
+        <ProgressBar ProgressColor="Purple" Progress="0.0" 
+                     x:Name="progressBar"/>
+        <Label x:Name="lblProgress" Text="Czekam na potwierdzenie..." TextColor="Black" HorizontalTextAlignment="Center" Padding="5" />
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Button x:Name="btnSend" Text="Akceptuj" Padding="10"  BackgroundColor="Magenta" TextColor="White"  WidthRequest="150" Clicked="BtnSend_OnClicked"
+                    HorizontalOptions="Center"/>
+            <Button x:Name="btnExit" Text="Anuluj"   WidthRequest="120" 
+                    HorizontalOptions="Center" Clicked="BtnExit_OnClicked"/>
+        </StackLayout>
+
+    </StackLayout>
+</xct:Popup>

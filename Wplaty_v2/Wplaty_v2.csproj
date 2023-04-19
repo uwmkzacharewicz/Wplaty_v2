@@ -1,0 +1,73 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="DataBase\ActualPassenger.csv" />
+    <None Remove="DataBase\file.csv" />
+    <None Remove="DataBase\OpenSans-Medium.ttf" />
+    <None Remove="DataBase\PassengersBase1.db" />
+    <None Remove="DataBase\settings.png" />
+    <None Remove="DataBase\ticket.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="DataBase\ActualPassenger.csv" />
+    <EmbeddedResource Include="DataBase\file.csv" />
+    <EmbeddedResource Include="DataBase\OpenSans-Medium.ttf" />
+    <EmbeddedResource Include="DataBase\PassengersBase1.db" />
+    <EmbeddedResource Include="DataBase\settings.png" />
+    <EmbeddedResource Include="DataBase\ticket.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="30.0.1" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.20.0" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="21.1.39" />
+    <PackageReference Include="Syncfusion.Xamarin.DataGridExport" Version="21.1.39" />
+    <PackageReference Include="Syncfusion.Xamarin.SfAutoComplete" Version="21.1.39" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="21.1.39" />
+    <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="21.1.39" />
+    <PackageReference Include="Syncfusion.Xamarin.SfMaskedEdit" Version="21.1.39" />
+    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="21.1.39" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.5" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="View\CustomDialog.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\OptionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\OptionPages\AddNewPassengerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\OptionPages\EditPassengerInfoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\OrderingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\PassengerInfo.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\PaymentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\TablePaymentsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

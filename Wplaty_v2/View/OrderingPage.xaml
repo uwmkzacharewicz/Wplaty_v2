@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+           xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+           xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+           x:Class="Wplaty_v2.View.OrderingPage"
+           IsLightDismissEnabled="False"
+           Size="350,550"
+           >
+    <StackLayout Padding="10">
+        <StackLayout VerticalOptions="Start" Margin="0,5,0,10">
+            <Label Text="Zamawianie biletów" 
+                   VerticalOptions="Start"
+                   TextColor="#3F37C9"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+            <BoxView HeightRequest="1" Color="Black" IsVisible="True"/>
+        </StackLayout>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <ScrollView x:Name="scrollView" Orientation="Vertical" Padding="10"  VerticalScrollBarVisibility="Always">
+                <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
+                        <BoxView />
+                        <inputLayout:SfTextInputLayout IsHintAlwaysFloated="True"
+                                                       OutlineCornerRadius="8"
+                                                       IsEnabled="False"
+                                                       ContainerType="None">
+                            <Editor VerticalOptions="FillAndExpand"
+                                    AutoSize="TextChanges"
+                                    IsSpellCheckEnabled="False"
+                                    IsTextPredictionEnabled="False"
+                                    Text="Czekam na rozpoczęcie..."
+                                    x:Name="edit" 
+                                    FontSize="14"
+                                    TextChanged="Edit_OnTextChanged"
+                                    Focused="Edit_OnFocused"
+                            />
+                        </inputLayout:SfTextInputLayout>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+        <StackLayout VerticalOptions="End">
+            <progressBar:SfCircularProgressBar x:Name="progressCircus" 
+                                               Margin="0,-10,0,-10"
+                                               SegmentCount="4" 
+
+                                               ShowProgressValue="True"
+                                               Progress="0"
+                                               IndicatorOuterRadius="0.75" 
+                                               TrackOuterRadius="0.7"
+                                               IndicatorInnerRadius="0.6" 
+                                               TrackInnerRadius="0.61">
+            </progressBar:SfCircularProgressBar>
+            <Label x:Name="lblStatus" Padding="10" Text="Czekam na rozpoczęcie..." TextColor="#3F37C9"/>
+            <progressBar:SfLinearProgressBar x:Name="progressLine" 
+                                         TrackHeight="20"  
+                                         ScaleY="2"
+                                         ScaleX="0.95"
+                                         CornerRadius="20"
+                                         Progress="0"
+                                         ProgressColor="#F72585"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,10,0,0" VerticalOptions="End">
+                <Button x:Name="btnStart" 
+                                VerticalOptions="End" 
+                                Text="Start" 
+                                TextColor="White"
+                                CornerRadius="20"
+                                WidthRequest="150"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                BackgroundColor="#F72585"
+                                Clicked="BtnStart_OnClicked"/>
+                <Button x:Name="btnCancel" 
+                                VerticalOptions="End" 
+                                Text="Anuluj"
+                                CornerRadius="20"
+                                Clicked="BtnCancel_OnClicked"/>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+</xct:Popup>

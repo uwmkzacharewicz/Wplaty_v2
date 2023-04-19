@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wplaty_v2.MainPage">
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="BILETY MIESIĘCZNE" VerticalTextAlignment="Center"
+                   TextColor="White" FontSize="20" HorizontalOptions="CenterAndExpand"/>
+            <Image x:Name="disconnect" IsVisible="False" Source="disconnect.png" HorizontalOptions="EndAndExpand"/>
+            <Button x:Name="btnSettings" Text="Opcje" HorizontalOptions="EndAndExpand" Margin ="5" HeightRequest="40" BorderWidth="1" BackgroundColor="White" TextColor="Black" BorderColor="DarkBlue" Clicked="BtnSettings_OnClicked"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <RefreshView x:Name="myRefreshView" RefreshColor="DarkBlue" Refreshing="MyRefreshView_OnRefreshing">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout Spacing="10" Padding="10" Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Zapłacone" VerticalOptions="CenterAndExpand" TextColor="DimGray"/>
+                <Switch x:Name="Paid" IsToggled="True" Toggled="Paid_OnToggled"/>
+            </StackLayout>
+            <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Spacing="10" Padding="10" HorizontalOptions="CenterAndExpand">
+                <Label Text="Niezapłacone" VerticalOptions="CenterAndExpand" TextColor="DimGray"/>
+                <Switch x:Name="NotPaid" IsToggled="True" Toggled="NotPaid_OnToggled"/>
+            </StackLayout>
+            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                <SearchBar x:Name="SearchPassenger" TextChanged="SearchPassenger_OnTextChanged"/>
+            </StackLayout>
+            <ListView x:Name="PassengerView"
+                      Grid.Row="2"
+                      Grid.Column="0"
+                      Grid.ColumnSpan="2"
+                      BackgroundColor="White"
+                      ItemTapped="PassengerView_OnItemTapped"
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      Margin="10"
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="200">
+                                <Label Text="{Binding ModelFullName}"
+                                       FontAttributes="Bold"
+                                       Padding="10"
+                                       LineBreakMode="TailTruncation"
+                                       TextColor="{Binding Color}"/>
+                                <Label Grid.Column="1"
+                                       Text="{Binding ModelRoute}"
+                                       TextColor="{Binding Color}"
+                                       Padding="10"
+                                       HorizontalTextAlignment="Center"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Grid.Row="3" Grid.Column="0" VerticalOptions="End" Padding="10" HorizontalOptions="Center">
+                <Button x:Name="btnShowPayments" 
+                    Text="Pokaż tabelę wpłat"
+                    BackgroundColor="#B5179E"
+                    TextColor="White"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="300"
+                    CornerRadius="20"
+                    FontSize="18"
+                    Clicked="BtnShowPayments_OnClicked"/>       
+            </StackLayout>
+        </Grid>
+    </RefreshView>
+</ContentPage>
+
+

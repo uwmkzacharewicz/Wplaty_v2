@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wplaty_v2.View.PassengerInfo">
+    <NavigationPage.TitleView>
+        <StackLayout Padding="5" Orientation="Horizontal" BackgroundColor="DodgerBlue">
+            <Label Text="Dane pasażera"
+                   Padding="5"
+                   FontSize="24"
+                   TextColor="White"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center"
+                   HeightRequest="50"
+                   WidthRequest="300"/>
+            <Label Text="{Binding ID, StringFormat='[{0}]'}"
+                   FontSize="26"
+                   TextColor="White"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   WidthRequest="120"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Label Text="{Binding FullName}"
+                   FontSize="32"
+                   FontFamily="OpenSans-Medium"
+                   TextColor="Red"
+                   HorizontalTextAlignment="Center"
+                   Padding="10"/>
+            <BoxView HeightRequest="1" Color="Black" IsVisible="True"/>
+            <StackLayout Orientation="Vertical" Padding="10" HorizontalOptions="FillAndExpand">
+                <Label Text="Trasa:" 
+                       FontSize="18"
+                       TextColor="Black"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"
+                       HorizontalTextAlignment="Center"/>
+                <Label Text="{Binding Route}" 
+                       FontSize="25"
+                       TextColor="Black"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"
+                       HorizontalTextAlignment="Center"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" Padding="10" HorizontalOptions="FillAndExpand">
+                <Label Text="Cena biletu:" 
+                       FontSize="18"
+                       TextColor="Black"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"
+                       HorizontalTextAlignment="Center"/>
+                <Label Text="{Binding Price, StringFormat='{0} zł'}" 
+                       FontSize="28"
+                       TextColor="DeepPink"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"
+                       HorizontalTextAlignment="Center"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" Padding="10" HorizontalOptions="FillAndExpand">
+                <Label Text="Numer telefonu:" 
+                       FontSize="18"
+                       TextColor="Black"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"
+                       HorizontalTextAlignment="Center"/>
+                <Label x:Name="lblNumberPhone"
+                        Text=""
+                       FontSize="26"
+                       TextColor="Red"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"
+                       HorizontalTextAlignment="Center"/>
+            </StackLayout>
+            <Button x:Name="BtnConfirm" Text="Przyjmij wpłatę" FontSize="16" 
+                    FontAttributes="Bold"
+                    BackgroundColor="MediumVioletRed" TextColor="White" Margin="10" Clicked="BtnConfirm_OnClicked"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="10">
+                <Button x:Name="btnSendAccount"
+                        Text="Wyślij numer konta" 
+                        BackgroundColor="DodgerBlue" 
+                        TextColor="White" 
+                        Clicked="BtnSendAccount_OnClicked"/>
+                <Button x:Name="btnSendSMS"
+                    Text="Wyślij sms"
+                        BackgroundColor="DodgerBlue" 
+                        TextColor="White" 
+                    Clicked="BtnSendSMS_OnClicked"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="CenterAndExpand">
+                <Button x:Name="btnCall"  Text="Zadzwoń"
+                                BackgroundColor="Green" 
+                                TextColor="White" 
+                                WidthRequest="200" Clicked="BtnCall_OnClicked"/>
+            </StackLayout>
+            <BoxView HeightRequest="1" Color="Black" IsVisible="True" Margin="10"/>
+            <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                <Button x:Name="btnEdit"
+                    Text="Edytuj"
+                        WidthRequest="200" Clicked="BtnEdit_OnClicked"/>
+                <Button x:Name="btnUndoPayment"
+                        Text="Rezygnacja"
+                        BackgroundColor="Red"
+                        TextColor="White"
+                        WidthRequest="150"
+                        Clicked="BtnUndoPayment_OnClicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
