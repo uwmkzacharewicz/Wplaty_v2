@@ -6,6 +6,7 @@ public class MonoPackageManager_Resources {
 		"CsvHelper.dll",
 		"DocumentFormat.OpenXml.dll",
 		"FormsViewGroup.dll",
+		"Rg.Plugins.Popup.dll",
 		"SQLite-net.dll",
 		"SQLitePCLRaw.batteries_v2.dll",
 		"SQLitePCLRaw.core.dll",

@@ -35,7 +35,7 @@
                 </StackLayout>
 
             </StackLayout>
-            <StackLayout   Padding="20">
+            <StackLayout   Padding="10">
                 <Label Text="Pozostałe opcje"
                        HorizontalTextAlignment="Center"
                        Padding="20"
@@ -59,12 +59,19 @@
                         TextColor="White" 
                         HorizontalOptions="CenterAndExpand"
                         Clicked="BtnShowPaymentsTable_OnClicked"/>
+                <Button x:Name="btnShowPassengerTable"
+                        Text="Lista pasażerów z bazy danych" 
+                        BackgroundColor="DeepPink" 
+                        TextColor="White" 
+                        HorizontalOptions="CenterAndExpand"
+                        Clicked="btnShowPassengerTable_Clicked"/>
                 <Button x:Name="btnNewMonth"
-                        Text="NOWY MIESIĄC" 
+                        Text="Wyczyść Dane z bazy danych" 
                         BackgroundColor="Red" 
                         TextColor="White" 
                         HorizontalOptions="CenterAndExpand"
                         Clicked="BtnNewMonth_OnClicked"/>
+                
             </StackLayout>
 
             <Label Text="Welcome to Xamarin.Forms!"

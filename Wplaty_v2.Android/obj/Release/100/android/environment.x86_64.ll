@@ -81,7 +81,7 @@ target triple = "x86_64-unknown-linux-android"
 @__app_environment_variables_n_1.2 = internal constant [15 x i8] c"MONO_GC_PARAMS\00", align 1
 @__app_environment_variables_v_1.3 = internal constant [21 x i8] c"major=marksweep-conc\00", align 16
 @__app_environment_variables_n_2.4 = internal constant [17 x i8] c"XAMARIN_BUILD_ID\00", align 16
-@__app_environment_variables_v_2.5 = internal constant [37 x i8] c"73afcc38-76ed-4211-a226-59f9658af433\00", align 16
+@__app_environment_variables_v_2.5 = internal constant [37 x i8] c"2235041e-7dc4-465a-a184-fb528b1dfa13\00", align 16
 @__app_environment_variables_n_3.6 = internal constant [28 x i8] c"XA_HTTP_CLIENT_HANDLER_TYPE\00", align 16
 @__app_environment_variables_v_3.7 = internal constant [41 x i8] c"Xamarin.Android.Net.AndroidClientHandler\00", align 16
 @__app_environment_variables_n_4.8 = internal constant [16 x i8] c"XA_TLS_PROVIDER\00", align 16
@@ -106,7 +106,7 @@ target triple = "x86_64-unknown-linux-android"
 
 ; app_system_properties
 @app_system_properties = local_unnamed_addr constant [0 x i8*] zeroinitializer, align 8
-@__ApplicationConfig_android_package_name.0 = internal constant [26 x i8] c"com.companyname.wplaty_v2\00", align 16
+@__ApplicationConfig_android_package_name.0 = internal constant [26 x i8] c"com.companyname.wplaty_v3\00", align 16
 
 ; application_config
 @application_config = local_unnamed_addr constant %struct.ApplicationConfig {
@@ -125,13 +125,13 @@ target triple = "x86_64-unknown-linux-android"
 	i32 3, ; package_naming_policy
 	i32 12, ; environment_variable_count
 	i32 0, ; system_property_count
-	i32 80, ; number_of_assemblies_in_apk
+	i32 81, ; number_of_assemblies_in_apk
 	i32 0, ; bundled_assembly_name_width
 	i32 2, ; number_of_assembly_store_files
 	i32 24, ; number_of_dso_cache_entries
 	i32 33555527, ; android_runtime_jnienv_class_token
-	i32 100675878, ; jnienv_initialize_method_token
-	i32 100675877, ; jnienv_registerjninatives_method_token
+	i32 100675892, ; jnienv_initialize_method_token
+	i32 100675891, ; jnienv_registerjninatives_method_token
 	i32 0, ; jni_remapping_replacement_type_count
 	i32 0, ; jni_remapping_replacement_method_index_entry_count
 	i32 0, ; mono_components_mask
@@ -323,7 +323,7 @@ target triple = "x86_64-unknown-linux-android"
 
 
 ; Assembly store individual assembly data
-@assembly_store_bundled_assemblies = local_unnamed_addr global [80 x %struct.AssemblyStoreSingleAssemblyRuntimeData] zeroinitializer, align 16
+@assembly_store_bundled_assemblies = local_unnamed_addr global [81 x %struct.AssemblyStoreSingleAssemblyRuntimeData] zeroinitializer, align 16
 
 ; Assembly store data
 @assembly_stores = local_unnamed_addr global [2 x %struct.AssemblyStoreRuntimeData] zeroinitializer, align 16
@@ -332,4 +332,4 @@ target triple = "x86_64-unknown-linux-android"
 !llvm.ident = !{!2}
 !0 = !{i32 1, !"wchar_size", i32 4}
 !1 = !{i32 7, !"PIC Level", i32 2}
-!2 = !{!"Xamarin.Android remotes/origin/d17-5 @ 797e2e13d1706ace607da43703769c5a55c4de60"}
+!2 = !{!"Xamarin.Android remotes/origin/d17-5 @ a8a26c7b003e2524cc98acb2c2ffc2ddea0f6692"}

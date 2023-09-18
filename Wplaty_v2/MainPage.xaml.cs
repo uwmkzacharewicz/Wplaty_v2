@@ -124,5 +124,14 @@ namespace Wplaty_v2
         {
             await Navigation.PushAsync(new TablePaymentsView());
         }
+
+        private void btnRefreshData_Clicked(object sender, EventArgs e)
+        {
+            GenerateNewModelListPassenger();
+            var freshList = PassengerView.ItemsSource = ModelListView.GetFilter(PassengersListView, Paid.IsToggled, NotPaid.IsToggled, SearchPassenger.Text);
+
+            PassengerView.ItemsSource = freshList;
+            BindingContext = this;
+        }
     }
 }

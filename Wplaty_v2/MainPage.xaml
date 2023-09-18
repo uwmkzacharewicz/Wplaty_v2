@@ -63,16 +63,23 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <StackLayout Grid.Row="3" Grid.Column="0" VerticalOptions="End" Padding="10" HorizontalOptions="Center">
+            <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Padding="10" Orientation="Horizontal">
                 <Button x:Name="btnShowPayments" 
-                    Text="Pokaż tabelę wpłat"
-                    BackgroundColor="#B5179E"
-                    TextColor="White"
-                    HorizontalOptions="CenterAndExpand"
-                    WidthRequest="300"
-                    CornerRadius="20"
-                    FontSize="18"
-                    Clicked="BtnShowPayments_OnClicked"/>       
+                        Text="Pokaż tabelę wpłat"
+                        BackgroundColor="#B5179E"
+                        TextColor="White"
+                        CornerRadius="20"
+                        FontSize="16"
+                        Clicked="BtnShowPayments_OnClicked"/>
+                <Button x:Name="btnRefreshData" 
+                        Text="Odśwież dane"
+                        BackgroundColor="OrangeRed"
+                        TextColor="White"
+                        CornerRadius="20"
+                        FontSize="16"
+                        Clicked="btnRefreshData_Clicked"
+                        />
+
             </StackLayout>
         </Grid>
     </RefreshView>

@@ -20,3 +20,6 @@ E:\OneDrive\Dokumenty\Xamarin Project\Wplaty_v2\Wplaty_v2\obj\Release\netstandar
 E:\OneDrive\Dokumenty\Xamarin Project\Wplaty_v2\Wplaty_v2\obj\Release\netstandard2.0\View\OptionPage.xaml.g.cs
 E:\OneDrive\Dokumenty\Xamarin Project\Wplaty_v2\Wplaty_v2\obj\Release\netstandard2.0\View\OptionPages\EditPassengerInfoPage.xaml.g.cs
 E:\OneDrive\Dokumenty\Xamarin Project\Wplaty_v2\Wplaty_v2\obj\Release\netstandard2.0\View\OptionPages\AddNewPassengerPage.xaml.g.cs
+E:\OneDrive\Dokumenty\Xamarin Project\Wplaty_v2\Wplaty_v2\obj\Release\netstandard2.0\View\CustomDialog.xaml.g.cs
+E:\OneDrive\Dokumenty\Xamarin Project\Wplaty_v2\Wplaty_v2\obj\Release\netstandard2.0\View\EditPassengerPage.xaml.g.cs
+E:\OneDrive\Dokumenty\Xamarin Project\Wplaty_v2\Wplaty_v2\obj\Release\netstandard2.0\View\PassengerListPage.xaml.g.cs

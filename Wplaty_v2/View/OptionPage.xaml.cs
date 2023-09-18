@@ -62,10 +62,16 @@ namespace Wplaty_v2.View
         }
 
 		private async void BtnChangePaymentNumber_OnClicked(object sender, EventArgs e)
-		{
+        {
+            await ChangePaymentNumber();
+
+        }
+
+        private async Task ChangePaymentNumber()
+        {
             string result = await DisplayPromptAsync($"" +
-                                                     $"pref_nrPayment" +
-                                                     $": {Preferences.Get("pref_nrPayment", 0)}", "Podaj nowy numer:", keyboard: Keyboard.Numeric);
+                                                                 $"pref_nrPayment" +
+                                                                 $": {Preferences.Get("pref_nrPayment", 0)}", "Podaj nowy numer:", keyboard: Keyboard.Numeric);
 
             if (result != null)
             {
@@ -73,23 +79,37 @@ namespace Wplaty_v2.View
                 Preferences.Remove("pref_nrPayment");
                 Preferences.Set("pref_nrPayment", newNumber);
             }
-
         }
 
-		private async void BtnShowPaymentsTable_OnClicked(object sender, EventArgs e)
+        private async void BtnShowPaymentsTable_OnClicked(object sender, EventArgs e)
 		{
             await Navigation.PushAsync(new TablePaymentsView());
         }
 
-		private void BtnNewMonth_OnClicked(object sender, EventArgs e)
+		private async void BtnNewMonth_OnClicked(object sender, EventArgs e)
 		{
 
-		}
+            bool result = await DisplayAlert("Czyszczenie bazy", "Czy zresetować bazę danych?", "Tak", "Nie");
+
+            if (result)
+            {
+                MainDataBase.ResetPassengerStatusAndPaymentDate();
+                await ChangePaymentNumber();
+            }
+
+            await DisplayAlert("Zakończono czyszczenie", "Zakończenie czyszczenia bazy", "OK");
+
+        }
 
 		private void BackButton_OnClicked(object sender, EventArgs e)
 		{
             var dualSimSmsService = DependencyService.Get<IDualSimSmsService>();
-            dualSimSmsService.SendSms("123456789", "Hello, World!", 1); // 1 oznacza drugi slot SIM
+            dualSimSmsService.SendSms("515997823", "Hello, World!", 1); // 1 oznacza drugi slot SIM
         }
-	}
+
+        private async void btnShowPassengerTable_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PassengerListPage());
+        }
+    }
 }

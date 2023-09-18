@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wplaty_v2.View.EditPassengerPage"
+             Title="Edytuj pasażera">
+    <StackLayout Padding="10">
+        <Entry x:Name="FullNameEntry" Placeholder="Pełne imię" />
+        <Entry x:Name="IDEntry" Placeholder="ID" />
+        <!-- Dodaj więcej pól Entry dla innych właściwości Passenger -->
+        <Button Text="Zapisz" Clicked="SaveButton_Clicked" />
+    </StackLayout>
+</ContentPage>

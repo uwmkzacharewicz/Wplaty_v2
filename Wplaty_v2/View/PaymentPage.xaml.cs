@@ -28,7 +28,7 @@ namespace Wplaty_v2.View
             get
             {
                 if (!Preferences.ContainsKey("pref_nrPayment"))
-                    Preferences.Set("pref_nrPayment", 202304001);
+                    Preferences.Set("pref_nrPayment", 202309001);
 
                 if (CurrentPassenger.Status == "Yes")
                     return GetNumberIfExist();
@@ -38,7 +38,7 @@ namespace Wplaty_v2.View
             set
             {
                 if (!Preferences.ContainsKey("pref_nrPayment"))
-                    Preferences.Set("pref_nrPayment", 202304001);
+                    Preferences.Set("pref_nrPayment", 202309001);
                 _nextPaymentNumber = value;
             }
         }
@@ -50,17 +50,17 @@ namespace Wplaty_v2.View
             CurrentPassenger = sendingCurrentPassenger;
             DatePayment = DateTime.Now.ToString("dd/MM/yy HH:mm");
 
-            StatusConnection = (int)Connectivity.NetworkAccess;
+            //StatusConnection = (int)Connectivity.NetworkAccess;
 
-            // 1 => No internet
-            if (StatusConnection == 1)
-            {
-                lblProgress.Text = "Brak połączenia z internetem!";
-                lblProgress.TextColor = Color.Red;
-                btnSend.Text = "Dodaj do kolejki...";
-                btnSend.BackgroundColor = Color.Red;
-                btnSend.TextColor = Color.White;
-            }
+            //// 1 => No internet
+            //if (StatusConnection == 1)
+            //{
+            //    lblProgress.Text = "Brak połączenia z internetem!";
+            //    lblProgress.TextColor = Color.Red;
+            //    btnSend.Text = "Dodaj do kolejki...";
+            //    btnSend.BackgroundColor = Color.Red;
+            //    btnSend.TextColor = Color.White;
+            //}
 
 
             if (CurrentPassenger.Status == "Yes")
@@ -125,8 +125,8 @@ namespace Wplaty_v2.View
                 lblProgress.Text = "Wysyłanie sms...";
                 await progressBar.ProgressTo(0.5, 800, Easing.Linear);
 
-                OperationSending.SendSMS(CurrentPassenger, NextPaymentNumber, TypePay, DatePayment);
-                
+                //OperationSending.SendSMS(CurrentPassenger, NextPaymentNumber, TypePay, DatePayment);
+                OperationSending.SendSMS(CurrentPassenger, NextPaymentNumber, TypePay, DatePayment, Xamarin.Forms.Application.Current.MainPage);
 
             }
 

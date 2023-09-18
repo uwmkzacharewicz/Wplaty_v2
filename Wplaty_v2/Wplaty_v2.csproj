@@ -31,14 +31,15 @@
   <ItemGroup>
     <PackageReference Include="CsvHelper" Version="30.0.1" />
     <PackageReference Include="DocumentFormat.OpenXml" Version="2.20.0" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
-    <PackageReference Include="Syncfusion.Xamarin.Core" Version="21.1.39" />
-    <PackageReference Include="Syncfusion.Xamarin.DataGridExport" Version="21.1.39" />
-    <PackageReference Include="Syncfusion.Xamarin.SfAutoComplete" Version="21.1.39" />
-    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="21.1.39" />
-    <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="21.1.39" />
-    <PackageReference Include="Syncfusion.Xamarin.SfMaskedEdit" Version="21.1.39" />
-    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="21.1.39" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="21.1.41" />
+    <PackageReference Include="Syncfusion.Xamarin.DataGridExport" Version="21.1.41" />
+    <PackageReference Include="Syncfusion.Xamarin.SfAutoComplete" Version="21.1.41" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="21.1.41" />
+    <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="21.1.41" />
+    <PackageReference Include="Syncfusion.Xamarin.SfMaskedEdit" Version="21.1.41" />
+    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="21.1.41" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.5" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
@@ -46,6 +47,9 @@
 
   <ItemGroup>
     <EmbeddedResource Update="View\CustomDialog.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\EditPassengerPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\OptionPage.xaml">
@@ -61,6 +65,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\PassengerInfo.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\PassengerListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\PaymentPage.xaml">

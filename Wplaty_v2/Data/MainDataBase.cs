@@ -1,6 +1,7 @@
 ﻿using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -87,43 +88,12 @@ namespace Wplaty_v2.Data
             return list;
         }
 
-        //public async static Task<List<Passenger>> GetListFromFirebase()
-        //{
-        //    List<Passenger> databaseRecords = new List<Passenger>();
+        public static void UpdatePassenger(Passenger passenger)
+        {
+            Debug.WriteLine($"Aktualizacja pasażera ID: {passenger.ID}, FullName: {passenger.FullName}");
+            MyDB.Update(passenger);
+        }
 
-        //    FirebaseClient firebaseClient =
-        //        new FirebaseClient("https://myfirstdatabase-cf2fb-default-rtdb.europe-west1.firebasedatabase.app/");
-
-        //    //var collection = (await firebaseClient
-        //    //    .Child("Passenger")
-        //    //    .OnceAsync<Passenger>()).Select(item => new Passenger
-        //    //    {
-        //    //        FullName = item.Object.FullName,
-        //    //        DateOfPayment = item.Object.DateOfPayment,
-        //    //        ID = item.Object.ID,
-        //    //        Phone = item.Object.Phone,
-        //    //        Price = item.Object.Price,
-        //    //        Route = item.Object.Route,
-        //    //        Status = item.Object.Status
-        //    //    }).ToList();
-
-        //    //foreach (var p in collection)
-        //    //{
-        //    //    Console.WriteLine(p.FullName);
-        //    //}
-        //    var collection = firebaseClient
-        //        .Child("Passenger")
-        //        .AsObservable<Passenger>()
-        //        .Subscribe((dbevent) =>
-        //        {
-        //            if (dbevent.Object != null)
-        //            {
-        //                databaseRecords.Add(dbevent.Object);
-        //            }
-        //        });
-
-        //    return databaseRecords;
-        //}
 
         private void FillTableTicketFromFile()
         {
@@ -166,6 +136,48 @@ namespace Wplaty_v2.Data
             }
 
 
+        }
+
+        // wyczyszczenie bazy danych
+        public static void ResetPassengerStatusAndPaymentDate()
+        {
+            // Zaktualizuj wartość Status na "No" i DateOfPayment na null dla każdego pasażera
+            string query = "UPDATE Passenger SET Status = 'No', DateOfPayment = NULL";
+            SQLiteCommand command = MyDB.CreateCommand(query);
+            command.ExecuteNonQuery();
+
+            // Usuń rekordy z tabeli Payment
+            query = "DELETE FROM Payment";
+            command = MyDB.CreateCommand(query);
+            command.ExecuteNonQuery();
+
+
+            // Znajdź wszystkich pasażerów
+            //var passengers = GetListPassenger();
+
+            // Aktualizuj wartość Status na "No" i DateOfPayment na null dla każdego pasażera
+
+            //foreach (var passenger in passengers)
+            //{
+            //    try
+            //    {
+            //        passenger.Status = "No";
+            //        passenger.DateOfPayment = null;
+
+            //        Debug.WriteLine($"Passenger {passenger.ID} before update: Status - {passenger.Status}, DateOfPayment - {passenger.DateOfPayment}");
+
+            //        MyDB.Update(passenger);
+
+            //        Query the database to check the updated values
+            //        var updatedPassenger = MyDB.Get<Passenger>(passenger.ID);
+
+            //        Debug.WriteLine($"Passenger {passenger.ID} after update: Status - {updatedPassenger.Status}, DateOfPayment - {updatedPassenger.DateOfPayment}");
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Debug.WriteLine($"Error updating passenger {passenger.ID}: {ex.Message}");
+            //    }
+            //}
         }
 
 
