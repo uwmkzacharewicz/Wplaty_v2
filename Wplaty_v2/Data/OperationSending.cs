@@ -45,27 +45,10 @@ namespace Wplaty_v2.Data
             {
                 AddPaymentToDataBase(p, numberPay, date, statusSending, comm);
 
-                // Aktualizacja rekordu
-                string com = $"UPDATE Passenger SET Status = 'Yes', DateOfPayment = '{date}' WHERE ID = {p.ID}";
-                MainDataBase.MyDB.Execute(com);
-
-
-                // Pobranie i wyświetlenie zaktualizowanego rekordu
-                var updatedPassenger = MainDataBase.MyDB.Query<Passenger>($"SELECT * FROM Passenger WHERE ID = {p.ID}").FirstOrDefault();
-                if (updatedPassenger != null)
-                {
-                    Console.WriteLine($"ID: {updatedPassenger.ID}, Status: {updatedPassenger.Status}, DateOfPayment: {updatedPassenger.DateOfPayment}");
-                }
-
-                //string com = $"UPDATE Passenger SET Status = 'Yes', DateOfPayment = '{date}' WHERE ID = {p.ID}";
-                //SQLiteCommand command = MainDataBase.MyDB.CreateCommand(com);
-                //command.ExecuteNonQuery();
-
-
-
-                //string com = "UPDATE Passenger SET Status = \"Yes\", DateOfPayment = \"" + date + "\" WHERE ID = \"" + p.ID + "\"";
-                //SQLiteCommand command = MainDataBase.MyDB.CreateCommand(com);
-                //command.ExecuteNonQuery();
+                string com = "UPDATE Passenger SET Status = \"Yes\", DateOfPayment = \"" + date + "\" WHERE ID = " + p.ID;
+                
+                SQLiteCommand command = MainDataBase.MyDB.CreateCommand(com);
+                command.ExecuteNonQuery();
 
                 SendEmail(p, type, numberPay, date);
                 Preferences.Set("pref_nrPayment", ++numberPay);
@@ -150,7 +133,7 @@ namespace Wplaty_v2.Data
 
             int numberM = numberMonth < 12 ? numberMonth : 0;
 
-            string ticketMonth = listMonth[numberM].ToUpper() + " 2023";
+            string ticketMonth = listMonth[numberM].ToUpper() + " 2024";
 
             string messageToSend = "-------------------  ZAPŁACONO  -------------------\n" +
                                    $"[{nrPay}]  {date}\n" +

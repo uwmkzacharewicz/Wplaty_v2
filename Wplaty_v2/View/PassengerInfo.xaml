@@ -30,6 +30,7 @@
                    TextColor="Red"
                    HorizontalTextAlignment="Center"
                    Padding="10"/>
+            <Label Text="{Binding Status}" />
             <BoxView HeightRequest="1" Color="Black" IsVisible="True"/>
             <StackLayout Orientation="Vertical" Padding="10" HorizontalOptions="FillAndExpand">
                 <Label Text="Trasa:" 
